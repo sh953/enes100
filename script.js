@@ -16,7 +16,7 @@ function fixColors() {
 				elm.style.color = colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd';
 			}
 	});
-	//
+	
 }
 
 $(document).ready(function() {
@@ -599,7 +599,7 @@ $(document).ready(function() {
       tabOrientation: wcDocker.TAB.TOP
     });
 
-    var chatPanel1 = myDocker.addPanel('Chat Panel', wcDocker.DOCK.BOTTOM, null, {h:'10%'});
+    //var chatPanel1 = myDocker.addPanel('Chat Panel', wcDocker.DOCK.BOTTOM, null, {h:'10%'});
     var componentChooserPanel = myDocker.addPanel('Component Chooser', wcDocker.DOCK.RIGHT, null, {w:'25%'});
 	var controlPanel = myDocker.addPanel('Control Panel', wcDocker.DOCK.STACKED, componentChooserPanel, {
       tabOrientation: wcDocker.TAB.TOP
@@ -607,7 +607,7 @@ $(document).ready(function() {
 
     myDocker.addPanel('Top Panel', wcDocker.DOCK.TOP);
     
-    var chatPanel2 = myDocker.addPanel('Chat Panel', wcDocker.DOCK.RIGHT, chatPanel1);
+    //var chatPanel2 = myDocker.addPanel('Chat Panel', wcDocker.DOCK.RIGHT, chatPanel1);
     var batchPanel = myDocker.addPanel('Creation Panel', wcDocker.DOCK.LEFT, wcDocker.COLLAPSED, {w: '25%'});
   }
 });
