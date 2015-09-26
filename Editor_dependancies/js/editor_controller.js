@@ -5,6 +5,8 @@ function Editor_Controller() {
 	this.isInitialized = false;
 	// Compiler
 	this.Compiler = new Compiler_System();
+	// Element Map Model
+	this.Element_Map = new Element_Map_Model();
 	// Phone Editor
 	this.ActivePhoneEditor = null;
 	// Preview System
@@ -188,8 +190,7 @@ function Editor_Controller() {
 						buttonPixelFontSize = 16;
 					}
 					me.ActivePhoneEditor.addButtonToCanvas(buttonID,buttonText,buttonColor,buttonTextColor,buttonPixelFontSize);
-					me.Compiler.buttonCodeBlock(buttonID,buttonText,buttonFontSize,buttonTextColor,buttonColor,buttonEnabled);
-					me.Compiler.addTo_idArray(buttonID);
+					me.Element_Map.addButton(buttonID,buttonText,buttonFontSize,buttonTextColor,buttonColor,buttonEnabled);
 				} else {
 					alert('Error: There is not Compiler currently connected to this command!');
 				}
@@ -224,8 +225,7 @@ function Editor_Controller() {
 						entryPixelFontSize = 16;
 					}
 					me.ActivePhoneEditor.addEntryToCanvas(entryID,entryPlaceholder,'#FFFFFF',entryTextColor,entryPixelFontSize);
-					me.Compiler.entryCodeBlock(entryID,entryPlaceholder,entryPassword,entryFontSize,entryTextColor);
-					me.Compiler.addTo_idArray(entryID);
+					me.Element_Map.addEntry(entryID,entryPlaceholder,entryPassword,entryFontSize,entryTextColor);
 				} else {
 					alert('Error: There is not Compiler currently connected to this command!');
 				}
@@ -245,8 +245,7 @@ function Editor_Controller() {
 					me.imageIDBox.value = "";
 					me.imageURLBox.value = "";
 					me.ActivePhoneEditor.addImageToCanvas(imageID,imageURL);
-					me.Compiler.imageCodeBlock(imageID,imageURL);
-					me.Compiler.addTo_idArray(imageID);
+					me.Element_Map.addImage(imageID,imageURL);
 				} else {
 					alert('Error: There is not Compiler currently connected to this command!');
 				}
@@ -276,8 +275,7 @@ function Editor_Controller() {
 						labelPixelFontSize = 16;
 					}
 					me.ActivePhoneEditor.addLabelToCanvas(labelID,labelText,labelPixelFontSize);
-					me.Compiler.labelCodeBlock(labelID,labelText,labelFontSize,labelTextColor);
-					me.Compiler.addTo_idArray(labelID);
+					me.Element_Map.addLabel(labelID,labelText,labelPixelFontSize);
 				} else {
 					alert('Error: There is not Compiler currently connected to this command!');
 				}
@@ -290,6 +288,7 @@ function Editor_Controller() {
 	};
 	this.compileButtonClicked = function(event) {
 		if(me.ActiveProjectID!=null && me.ActivePageID!=null) {
+			me.Element_Map.compile(me.Compiler);
 			me.Compiler.combineCode(me.ActiveProjectID,me.ActivePageID);
 		} else if(me.ActiveProjectID==null && me.ActivePageID==null) {
 			alert('Active Project ID and Active Page ID are not set! Compiler Failed!');
