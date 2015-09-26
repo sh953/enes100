@@ -86,6 +86,26 @@ function Compiler_System() {
 		this.javascriptCode = javascriptStartBlock;
 		this.codeCSS += '*{ cursor: inherit;}\nhtml{cursor: url(http://sushy.io/img/mobile-cursor.png) 30 25, auto;\nbackground-color: #FFFFFF;}\n';
 	};
+	this.clearTempCode = function() {
+		this.idArray = new Array();
+		this.codeS0 = "";
+		this.codeS1 = "";
+		this.codeS2 = "";
+		this.codeS3 = "";
+		this.codeS4 = "";
+		this.codeS5 = "";
+		this.codeH0 = "";
+		this.codeH0Extra1 = "";
+		this.codeH0Extra2 = "";
+		this.codeH1 = "";
+		this.codeH2 = "";
+		this.codeH3 = "";
+		this.codeH4 = "";
+		this.codeH5 = "";
+		this.codeH5Extra = "";
+		this.codeCSS = "";
+		this.javascriptCode = "";
+	};
 	this.combineCode = function(pageID,projectID) {
 		if(this.cachedResults == null) {
 			this.InitCodeBlock(pageID,projectID);
@@ -127,6 +147,7 @@ function Compiler_System() {
 			fnOutput.push(this.javascriptCode);
 			fnOutput.push(websiteCode);
 			this.cachedResults = fnOutput;
+			this.clearTempCode();
 		}
 	};
 	this.createStackedLayout = function(id,arr) {
