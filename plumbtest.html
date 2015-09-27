@@ -29,6 +29,14 @@
 				border: 1px solid gray;
         width: 1000px;
         height: 500px;
+        float: left;
+			}
+
+			#options {
+				border: 1px solid gray;
+        width: 200px;
+        height: 500px;
+        float: left;
 			}
 
     </style>
@@ -37,8 +45,27 @@
   </head>  
  
   <body>
-  	<div id="container">
+  	<div id="superContainer">
+	  	<div id="container">
+	  	</div>
+	  	<div id="options">
+	  		<hn>Component Type</hn>
+	  		<ul>
+	  			<li><button id="functionComponent" type="button">Function</button></li>
+	  			<li><button id="textComponent" type="button">Text Field</button></li>
+	  			<li><button id="buttonComponent" type="button">Button</button></li>
+	  		</ul>
 
+	  		<hn>Arrow Type</hn>
+	  		<ul>
+	  			<li><button id="dataArrow" type="button">Data Flow</button></li>
+	  			<li><button id="eventArrow" type="button">Event Flow</button></li>
+	  		</ul>
+
+	  		<input id="componentNameBox" type="text" name="fname" placeholder="Component Name">
+	  		<br>
+	  		<button id="resetButton" type="button">Clear All</button>
+	  	</div>
   	</div>
   </body>
 </html>
