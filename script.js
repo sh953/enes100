@@ -16,7 +16,7 @@ function fixColors() {
 				elm.style.color = colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd';
 			}
 	});
-	
+
 }
 
 $(document).ready(function() {
@@ -154,7 +154,7 @@ $(document).ready(function() {
 		var $saveGraphTextBox = $('<input type="text" id="filename_box" placeholder="filename" style="width:100%;padding:0px;">');
 		var $saveGraphButton  = $('<button id="btnSave" style="width:100%;">Save</button>');
 		var $loadGraph        = $('<form id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post"><fieldset>Json File<input type="file" id="fileinput"><input type="button" id="btnLoad" value="Load" onclick="loadFile();"></fieldset></form>');
-		
+
 		if (!_savedLayout) {
           $loadButton.attr('disabled', true);
         }
@@ -169,8 +169,8 @@ $(document).ready(function() {
 		myPanel.layout().addItem($saveGraphTextBox, 0, 7, 2, 1);
 		myPanel.layout().addItem($saveGraphButton, 0, 8, 2, 1);
 		myPanel.layout().addItem($loadGraph, 0, 9, 2, 1);
-		
-		
+
+
         myPanel.layout().finishBatch();
 
         // Here we do some css table magic to make all other cells align to the top of the window.
@@ -215,11 +215,11 @@ $(document).ready(function() {
             saveTimer = 0;
           }, 500);
         });
-		
+
 		$saveGraphButton.click(function(){
 			saveFile();
 		});
-		
+
 		$clearGraphButton.click(function(){
 			clearGraph();
 		});
@@ -476,7 +476,7 @@ $(document).ready(function() {
         });
       }
     });
-	
+
 	myDocker.registerPanelType('Code Editor', {
       faicon: 'fa fa-code',
       onCreate: function(myPanel) {
@@ -503,7 +503,7 @@ $(document).ready(function() {
         });
       }
     });
-	
+
 	myDocker.registerPanelType('Phone Editor', {
       faicon: 'fa fa-code',
       onCreate: function(myPanel) {
@@ -518,7 +518,8 @@ $(document).ready(function() {
 		var phone_top = 214;
 		var phone_width = 750;
 		var phone_height = 1334;
-        var $container = $('<img id="deviceBackground" src="Editor_dependancies/img/'+phone_img+'.png"><div style="position: absolute; left: '+phone_left+'px; top: '+phone_top+'px;background-color: #FFFFFF;"><canvas id="'+$editorID+'" width="'+phone_width+'" height="'+phone_height+'">Your browser does not support HTML5 Canvas.</canvas></div>');
+				var toolbar = '<div id="user-toolbar-options"> <a href="#"><i class="icon-user"></i></a> <a href="#"><i class="icon-star"></i></a> <a href="#"><i class="icon-edit"></i></a> <a href="#"><i class="icon-delete"></i></a>'
+        var $container = $(toolbar + '<img id="deviceBackground" src="Editor_dependancies/img/'+phone_img+'.png"><div style="position: absolute; left: '+phone_left+'px; top: '+phone_top+'px;background-color: #FFFFFF;"><canvas id="'+$editorID+'" width="'+phone_width+'" height="'+phone_height+'">Your browser does not support HTML5 Canvas.</canvas></div>');
         myPanel.layout().addItem($container);
 		myPhoneEditor = new Phone_Editor ($editorID,phone_img,750,1334);
 		myPhoneEditor.init_Resize_Manager();
@@ -530,7 +531,7 @@ $(document).ready(function() {
         });
       }
     });
-	
+
 	myDocker.registerPanelType('Preview', {
       faicon: 'fa fa-code',
       onCreate: function(myPanel) {
@@ -554,7 +555,7 @@ $(document).ready(function() {
         });
       }
     });
-	
+
 	myDocker.registerPanelType('Component Chooser', {
       faicon: 'fa fa-code',
       onCreate: function(myPanel) {
@@ -564,9 +565,9 @@ $(document).ready(function() {
 			dockerIDs["component-chooser"] = dockerIDs["component-chooser"] + 1;
 		}
 		var $editorID = "component-chooser"+String(dockerIDs["component-chooser"]);
-        var $container = $('<h3>Components</h3><br><div class="panel-group" id="'+$editorID+'"><div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#'+$editorID+'" href="#collapse1">Page Details</a></h4></div><div id="collapse1" class="panel-collapse collapse in"><div class="panel-body"><input id="projectIDBox" type="text" placeholder="Project ID"></input><br><input id="pageIDBox" type="text" placeholder="Page ID"></input></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#'+$editorID+'" href="#collapse2">Buttons</a></h4></div><div id="collapse2" class="panel-collapse collapse in"><div class="panel-body"><input id="buttonIDBox" type="text" placeholder="Button ID"></input><br><input id="buttonEnabledBox" type="checkbox" value="isenabled" checked></input>Is Enabled?<br><input id="buttonColorBox" class="color" type="text" value="#F22613" placeholder="Button Hex Color: F22613"></input><br><input id="buttonTextBox" type="text" placeholder="Button Text"></input><br><input id="buttonTextColorBox" class="color" type="text" value="#FFFFFF" placeholder="Button Hex Text Color: F22613"></input><br>' + 
+        var $container = $('<h3>Components</h3><br><div class="panel-group" id="'+$editorID+'"><div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#'+$editorID+'" href="#collapse1">Page Details</a></h4></div><div id="collapse1" class="panel-collapse collapse in"><div class="panel-body"><input id="projectIDBox" type="text" placeholder="Project ID"></input><br><input id="pageIDBox" type="text" placeholder="Page ID"></input></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#'+$editorID+'" href="#collapse2">Buttons</a></h4></div><div id="collapse2" class="panel-collapse collapse in"><div class="panel-body"><input id="buttonIDBox" type="text" placeholder="Button ID"></input><br><input id="buttonEnabledBox" type="checkbox" value="isenabled" checked></input>Is Enabled?<br><input id="buttonColorBox" class="color" type="text" value="#F22613" placeholder="Button Hex Color: F22613"></input><br><input id="buttonTextBox" type="text" placeholder="Button Text"></input><br><input id="buttonTextColorBox" class="color" type="text" value="#FFFFFF" placeholder="Button Hex Text Color: F22613"></input><br>' +
 
-'<div class="dropdown" id="buttonFontSizeBox" placeholder="Button Font Size">' + 
+'<div class="dropdown" id="buttonFontSizeBox" placeholder="Button Font Size">' +
 '<button class="greyButton" type="button" data-toggle="dropdown">Font Size' +
 '<span class="caret"></span></button>' +
 '<ul class="dropdown-menu">' +
@@ -579,7 +580,7 @@ $(document).ready(function() {
 '</div>' +
 
 '<br><button id="addButtonButton">Add Button</button></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#'+$editorID+'" href="#collapse3">Entries</a></h4></div><div id="collapse3" class="panel-collapse collapse in"><div class="panel-body"><input id="entryIDBox" type="text" placeholder="Entry ID"></input><br><input id="entryPlaceholderBox" type="text" placeholder="Entry Placeholder"></input><br><input id="entryPasswordBox" type="checkbox" value="isPassword"></input>Password?<br><input id="entryTextColorBox" class="color" type="text" value="#ABB7B7" placeholder="Entry Hex Color: F22613"></input><br><input id="entryFontSizeBox" type="text" placeholder="Entry Font Size"></input><br><button id="addEntryButton">Add Entry</button></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#'+$editorID+'" href="#collapse4">Images</a></h4></div><div id="collapse4" class="panel-collapse collapse in"><div class="panel-body"><input id="imageIDBox" type="text" placeholder="Image ID"></input><br><input id="imageURLBox" type="text" placeholder="Image Source URL"></input><br><button id="addImageButton">Add Image</button></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#'+$editorID+'" href="#collapse5">Labels</a></h4></div><div id="collapse5" class="panel-collapse collapse in"><div class="panel-body"><input id="labelIDBox" type="text" placeholder="Label ID"></input><br><input id="labelTextBox" type="text" placeholder="Label Text"></input><br><input id="labelTextColorBox" class="color" type="text" value="#000000" placeholder="Label Hex Color: F22613"></input><br><input id="labelFontSizeBox" type="text" placeholder="Label Font Size"></input><br><button id="addLabelButton">Add Label</button></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#'+$editorID+'" href="#collapse6">Compiling</a></h4></div><div id="collapse6" class="panel-collapse collapse in"><div class="panel-body"><button id="compileButton">Compile</button><button id="showWebsiteButton">Show Website</button><button id="showXamarinButton">Show Xamarin</button><button id="showHTMLButton">Show HTML</button><button id="showCSSButton">Show CSS</button><button id="showJavascriptButton">Show JavaScript</button></div></div></div></div>');
-		
+
         myPanel.layout().addItem($container);
 		var myEditor = new Editor_Controller();
 		$container.onscroll = function () { console.log("Test"); };
@@ -604,7 +605,7 @@ $(document).ready(function() {
     // The order that each panel is added makes a difference.  In general, start
     // by creating the center panel and work your way outwards in all directions.
     var phoneEditorPanel = myDocker.addPanel('Phone Editor', wcDocker.DOCK.LEFT);
-	
+
 	var graphPanel = myDocker.addPanel('Graph Editor', wcDocker.DOCK.STACKED, phoneEditorPanel, {
       tabOrientation: wcDocker.TAB.TOP
     });
@@ -622,7 +623,7 @@ $(document).ready(function() {
     });
 
     myDocker.addPanel('Top Panel', wcDocker.DOCK.TOP);
-    
+
     //var chatPanel2 = myDocker.addPanel('Chat Panel', wcDocker.DOCK.RIGHT, chatPanel1);
     var batchPanel = myDocker.addPanel('Creation Panel', wcDocker.DOCK.LEFT, wcDocker.COLLAPSED, {w: '25%'});
   }
