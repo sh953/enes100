@@ -5,12 +5,19 @@ function Phone_Editor (base_element_id,phone_frame,width,height) {
 	this.phone_img = phone_frame;
 	this.width = width;
 	this.height = height;
-	
+
 	this.init_Resize_Manager = function() {
 		this.canvas.on('object:scaling', function(options) {
 			if (options.target) {
 				console.log('an object is being scaled! ', options.target.id);
 			}
+		});
+		this.canvas.on('object:selected', function(options){
+			console.log(options.target.id);
+			$(options.target.id).toolbar({
+				content: '#user-toolbar-options',
+				position: 'right'
+			});
 		});
 	};
 	this.addEntryToCanvas = function(id,placeholder,fillColor,fontColor,fontSize) {
