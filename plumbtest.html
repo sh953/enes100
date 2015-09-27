@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="graph_dependancies/js/jsPlumb-1.7.10-min.js"></script>
+		<script src="plumbtestscript.js"></script>
+	
+    <style type="text/css">
+      .item {
+      	position: absolute;
+			  border: 1px solid black;
+			  background-color: #ddddff;
+			}
+
+			.title {
+				padding: 10px;	
+				cursor: move;
+				background-color: #FFFFFF;
+			}
+
+			.connect {
+			  width: 100px;
+			  height: 60px;
+			  cursor: pointer;
+			}	
+
+			#container {
+				border: 1px solid gray;
+        width: 1000px;
+        height: 500px;
+        float: left;
+			}
+
+			#options {
+				border: 1px solid gray;
+        width: 200px;
+        height: 500px;
+        float: left;
+			}
+
+    </style>
+ 
+    <title>JSPlumb Demo</title>
+  </head>  
+ 
+  <body>
+  	<div id="superContainer">
+	  	<div id="container">
+	  	</div>
+	  	<div id="options">
+	  		<hn>Component Type</hn>
+	  		<ul>
+	  			<li><button id="functionComponent" type="button">Function</button></li>
+	  			<li><button id="textComponent" type="button">Text Field</button></li>
+	  			<li><button id="buttonComponent" type="button">Button</button></li>
+	  		</ul>
+
+	  		<hn>Arrow Type</hn>
+	  		<ul>
+	  			<li><button id="dataArrow" type="button">Data Flow</button></li>
+	  			<li><button id="eventArrow" type="button">Event Flow</button></li>
+	  		</ul>
+
+	  		<input id="componentNameBox" type="text" name="fname" placeholder="Component Name">
+	  		<br>
+	  		<button id="resetButton" type="button">Clear All</button>
+	  	</div>
+  	</div>
+  </body>
+</html>
