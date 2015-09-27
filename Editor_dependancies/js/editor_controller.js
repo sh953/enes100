@@ -175,6 +175,7 @@ function Editor_Controller() {
 					if(me.buttonEnabledBox.checked) {
 						buttonEnabled = "true";
 					}
+					console.log(me.entryFontSizeBox.value);
 					var buttonText = me.buttonTextBox.value;
 					var buttonFontSize = me.buttonFontSizeBox.value;
 					var buttonTextColor = me.buttonTextColorBox.value;
@@ -184,10 +185,16 @@ function Editor_Controller() {
 					me.buttonEnabledBox.checked = true;
 					me.buttonTextBox.value = "";
 					me.buttonFontSizeBox.value = "";
-					if(buttonFontSize=="Medium") {
+					if(buttonFontSize=="Default") {
+						buttonPixelFontSize = 36;
+					} else if(buttonFontSize=="Large") {
+						buttonPixelFontSize = 76;
+					} else if(buttonFontSize=="Medium") {
 						buttonPixelFontSize = 46;
-					} else {
-						buttonPixelFontSize = 16;
+					} else if(buttonFontSize=="Micro") {
+						buttonPixelFontSize = 14;
+					} else if(buttonFontSize=="Small") {
+						buttonPixelFontSize = 28;
 					}
 					me.ActivePhoneEditor.addButtonToCanvas(buttonID,buttonText,buttonColor,buttonTextColor,buttonPixelFontSize);
 					me.Element_Map.addButton(buttonID,buttonText,buttonFontSize,buttonTextColor,buttonColor,buttonEnabled);
@@ -201,6 +208,27 @@ function Editor_Controller() {
 			alert('Error: Controls have not been initialized correctly yet!');
 		}
 	};
+	jQuery("#fontDefault").click(function(e) {
+		me.buttonFontSizeBox.value = "Default";
+		e.preventDefault();
+	});
+	jQuery("#fontLarge").click(function(e) {
+		me.buttonFontSizeBox.value = "Large";
+		e.preventDefault();
+	});
+	jQuery("#fontMedium").click(function(e) {
+		entryFontSize = "Medium";
+		e.preventDefault();
+	});
+	jQuery("#fontMicro").click(function(e) {
+		me.buttonFontSizeBox.value = "Micro";
+		e.preventDefault();
+	});
+	jQuery("#fontSmall").click(function(e) {
+		me.buttonFontSizeBox.value = "Small";
+		e.preventDefault();
+	});
+	
 	this.addEntryButtonClicked = function(event) {
 		if(me.isInitialized) {
 			if(me.ActivePhoneEditor != null) {
@@ -236,6 +264,7 @@ function Editor_Controller() {
 			alert('Error: Controls have not been initialized correctly yet!');
 		}
 	};
+
 	this.addImageButtonClicked = function(event) {
 		if(me.isInitialized) {
 			if(me.ActivePhoneEditor != null) {
